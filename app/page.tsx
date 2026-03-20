@@ -299,7 +299,7 @@ async function fetchStats() {
   );
 }
 
-function DatasetCard({ dataset, router }) {
+function DatasetCard({ dataset, router }: { dataset: any, router: any }) {
   return (
     <div
       onClick={() => router.push(`/datasets/${dataset.name}`)}
