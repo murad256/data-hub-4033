@@ -15,28 +15,28 @@ export default function Home() {
     fetchStats();
   }, []);
 
+  async function fetchDatasets(query = "") {
+    setLoading(true);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_CKAN_URL}/api/3/action/package_search?q=${query}&rows=12`
+    );
+    const data = await res.json();
+    setDatasets(data.result.results);
+    setLoading(false);
+  }
 
-async function fetchDatasets(query = "") {
-  setLoading(true);
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_CKAN_URL}/api/3/action/package_search?q=${query}&rows=12`,);
-  const data = await res.json();
-  setDatasets(data.result.results);
-  setLoading(false);
-}
-
-async function fetchStats() {
-  const [pkgRes, orgRes] = await Promise.all([
-    fetch(`${process.env.NEXT_PUBLIC_CKAN_URL}/api/3/action/package_search?rows=0`, ),
-    fetch(`${process.env.NEXT_PUBLIC_CKAN_URL}/api/3/action/organization_list`, ),
-  ]);
-  const pkgData = await pkgRes.json();
-  const orgData = await orgRes.json();
-  setStats({
-    total: pkgData.result.count,
-    orgs: orgData.result.length,
-  });
-}
+  async function fetchStats() {
+    const [pkgRes, orgRes] = await Promise.all([
+      fetch(`${process.env.NEXT_PUBLIC_CKAN_URL}/api/3/action/package_search?rows=0`),
+      fetch(`${process.env.NEXT_PUBLIC_CKAN_URL}/api/3/action/organization_list`),
+    ]);
+    const pkgData = await pkgRes.json();
+    const orgData = await orgRes.json();
+    setStats({
+      total: pkgData.result.count,
+      orgs: orgData.result.length,
+    });
+  }
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
@@ -70,9 +70,26 @@ async function fetchStats() {
           >
             About
           </button>
+          <a
+            href={`${process.env.NEXT_PUBLIC_CKAN_URL}/user/login`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              background: "none",
+              border: "1px solid #AED6F1",
+              color: "#AED6F1",
+              fontSize: "13px",
+              cursor: "pointer",
+              padding: "6px 14px",
+              borderRadius: "6px",
+              textDecoration: "none",
+              fontWeight: "bold",
+            }}
+          >
+          🔒 Admin
+          </a>
         </div>
       </nav>
-
       {/* ── HOME VIEW ─────────────────────────────────────────────────── */}
       {view === "home" && (
         <div>
