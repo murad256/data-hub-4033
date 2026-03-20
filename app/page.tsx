@@ -45,7 +45,7 @@ async function fetchStats() {
   });
 }
 
-  function handleSearch(e) {
+  function handleSearch(e: React.FormEvent) {
     e.preventDefault();
     setView("datasets");
     fetchDatasets(search);
