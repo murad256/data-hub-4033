@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
-  const [datasets, setDatasets] = useState([]);
+  const [datasets, setDatasets] = useState<any[]>([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({ total: 0, orgs: 0 });
