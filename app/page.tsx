@@ -15,9 +15,6 @@ export default function Home() {
     fetchStats();
   }, []);
 
-const NGROK_HEADERS = {
-  "ngrok-skip-browser-warning": "true",
-}
 
 async function fetchDatasets(query = "") {
   setLoading(true);
@@ -32,10 +29,8 @@ async function fetchDatasets(query = "") {
 
 async function fetchStats() {
   const [pkgRes, orgRes] = await Promise.all([
-    fetch(`${process.env.NEXT_PUBLIC_CKAN_URL}/api/3/action/package_search?rows=0`, 
-      { headers: NGROK_HEADERS }),
-    fetch(`${process.env.NEXT_PUBLIC_CKAN_URL}/api/3/action/organization_list`, 
-      { headers: NGROK_HEADERS }),
+    fetch(`${process.env.NEXT_PUBLIC_CKAN_URL}/api/3/action/package_search?rows=0`, ),
+    fetch(`${process.env.NEXT_PUBLIC_CKAN_URL}/api/3/action/organization_list`, ),
   ]);
   const pkgData = await pkgRes.json();
   const orgData = await orgRes.json();
