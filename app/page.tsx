@@ -20,7 +20,6 @@ async function fetchDatasets(query = "") {
   setLoading(true);
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_CKAN_URL}/api/3/action/package_search?q=${query}&rows=12`,
-    { headers: NGROK_HEADERS }
   );
   const data = await res.json();
   setDatasets(data.result.results);
