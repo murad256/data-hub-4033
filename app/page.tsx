@@ -289,11 +289,11 @@ export default function Home() {
               We welcome datasets from non-profit organizations, local government bodies, and academic institutions. Get in touch and we'll walk you through the process.
             </p>
             <p style={{ color: "#2471A3", fontSize: "14px", fontWeight: "bold", margin: 0 }}>
-              Contact: [contact@yycdatasociety.ca]
+              Contact: apuni866@mtroyal.ca 
             </p>
           </div>
           <p style={{ color: "#7F8C8D", fontSize: "13px" }}>
-            Supported by Data for Good Calgary · Built with Portal.js, CKAN, and Databricks
+            Supported by Data for Good Calgary · Built with Portal.js, and CKAN.
           </p>
         </div>
       )}
