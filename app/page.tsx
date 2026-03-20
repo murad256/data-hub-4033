@@ -19,8 +19,7 @@ export default function Home() {
 async function fetchDatasets(query = "") {
   setLoading(true);
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_CKAN_URL}/api/3/action/package_search?q=${query}&rows=12`,
-  );
+    `${process.env.NEXT_PUBLIC_CKAN_URL}/api/3/action/package_search?q=${query}&rows=12`,);
   const data = await res.json();
   setDatasets(data.result.results);
   setLoading(false);
